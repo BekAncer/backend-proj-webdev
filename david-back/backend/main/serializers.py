@@ -2,7 +2,8 @@ from datetime import timezone
 from rest_framework import serializers
 from rest_framework import status, views
 from rest_framework.response import Response
-from .models import CustomUser
+from .models import CustomUser, Vehicle
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -23,3 +24,9 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
             balance=validated_data['balance']
         )
         return user
+
+
+class VehicleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vehicle
+        fields = '__all__'
